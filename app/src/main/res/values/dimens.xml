@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="up_market_jqrd_main_trend_view_height">240dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_0">0dp</dimen>
+</resources>

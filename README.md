@@ -6,3 +6,6 @@
 ####简单截图：
 ![MvvmApp-master](https://github.com/yezihengok/MvvmApp/blob/master/screenshots/device-1.png)
 
+####中心热点气泡图：
+![MvvmApp-master](https://github.com/yezihengok/MvvmApp/blob/master/screenshots/Screenshot_2.png)
+
