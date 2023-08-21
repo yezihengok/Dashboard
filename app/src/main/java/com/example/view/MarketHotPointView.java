@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -68,7 +69,8 @@ public class MarketHotPointView extends View {
 
     public void setDataList(List<MyData> mDataList) {
         this.mDataList = mDataList;
-        invalidate();
+        //invalidate();
+        startAnim();
     }
 
     public MarketHotPointView(Context context) {
@@ -94,13 +96,15 @@ public class MarketHotPointView extends View {
         mColor2 = ContextCompat.getColor(context, R.color.up_market_jqrd_circle2);
         mColor3 = ContextCompat.getColor(context, R.color.up_market_jqrd_circle3);
         mBorderColor = ContextCompat.getColor(context, R.color.up_common_divider_strong_color);
-        mBorderPaint = new Paint();
-        mBorderPaint.setStrokeWidth(1);
+        mBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);//抗锯齿
+        mBorderPaint.setStrokeWidth(2);
         mBorderPaint.setColor(mBorderColor);
         mBorderPaint.setStyle(Paint.Style.STROKE);
+
+
         mClickIndex=-1;
         mBgPaint = new Paint();
-        mBgPaint.setDither(true);
+        mBgPaint.setDither(true);//抗锯齿
         mBgPaint.setAntiAlias(true);
 
         mCirclePaint = new Paint();
@@ -309,7 +313,7 @@ public class MarketHotPointView extends View {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        startAnim();
+//        startAnim();
     }
 
     private boolean onAnimationEnd;
@@ -317,8 +321,9 @@ public class MarketHotPointView extends View {
      * 启动进度动画
      */
     private void startAnim(){
-        mClickIndex=-1;
-        onAnimationEnd=false;
+        mClickIndex = -1;
+        mProgress=0;
+        onAnimationEnd = false;
         //启动变动动画
         ValueAnimator angleAnim = ValueAnimator.ofFloat(0,1);
         angleAnim.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -326,8 +331,8 @@ public class MarketHotPointView extends View {
         angleAnim.addUpdateListener(valueAnimator -> {
             //设置当进度
             mProgress= (float) valueAnimator.getAnimatedValue();
-            if(mProgress<10){
-                postInvalidate();
+            if(mProgress<1){
+                invalidate();
             }
             Log.w("drawCircle","mProgressRadius="+mProgress);
         });
@@ -336,7 +341,7 @@ public class MarketHotPointView extends View {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 onAnimationEnd=true;
-                postInvalidate();
+                invalidate();
             }
         });
         angleAnim.start();
@@ -351,28 +356,38 @@ public class MarketHotPointView extends View {
      * @param drawerHeight
      */
     private void drawBorder(Canvas canvas, int drawerWidth, int drawerHeight) {
-
+        mBorderPaint.setPathEffect(null);
         mTempRect.set(0, 0, drawerWidth, drawerHeight);
         canvas.drawRect(mTempRect, mBorderPaint);
-        //画网格虚线
-        mBorderPaint.setPathEffect(LINE_EFFECT);
+
         float offsetY = (float) drawerHeight / Y_NUM;
         float startY = offsetY;
+
+        //网格虚线
+        mBorderPaint.setPathEffect(LINE_EFFECT);
+        Path path = new Path();
         //画3条横线
         for (int i = 1; i < Y_NUM; i++) {
-            canvas.drawLine(0, startY, drawerWidth, startY, mBorderPaint);
+            //canvas.drawLine(0, startY, drawerWidth, startY, mBorderPaint);
+            path.moveTo(0,startY);
+            path.lineTo(drawerWidth,startY);
             startY += offsetY;
         }
+        canvas.drawPath(path ,mBorderPaint);//改为用path 画虚线
 
         float offsetX = (float) drawerWidth / (X_NUM);
         float startX = offsetX;
+
+        path.reset();
         //画5条竖线
         for (int i = 1; i < X_NUM; i++) {
-            canvas.drawLine(startX, 0, startX, drawerHeight, mBorderPaint);
+            //canvas.drawLine(startX, 0, startX, drawerHeight, mBorderPaint);
+            path.moveTo(startX,0);
+            path.lineTo(startX,drawerHeight);
             startX += offsetX;
         }
-//        paint.setPathEffect(null);
-//        paint.setStyle(Paint.Style.FILL);
+        canvas.drawPath(path ,mBorderPaint);
+
     }
 
 
