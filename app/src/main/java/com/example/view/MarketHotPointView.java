@@ -218,7 +218,7 @@ public class MarketHotPointView extends View {
         } else {
             float maxRadius = cellW / 2 - getUnitWidth()*2;
             float minRadius = cellW / 15;
-            radius = (float) Math.min(maxRadius, getUnitWidth()/2 * (myData.ratio + 1));
+            radius = (float) Math.min(maxRadius, getUnitWidth()/2 * (myData.ratio ));
             radius = Math.max(radius, minRadius);
         }
         float offsetX, offsetY;
