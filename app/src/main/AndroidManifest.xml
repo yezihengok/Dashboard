@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="com.DashboardActivity"/>
         <activity android:name="com.example.HotPointActivity"/>
+        <activity android:name="com.example.RangeSeekBarActivity"/>
     </application>
 
 </manifest>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="价格"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <com.example.view.LinePathView
+            android:id="@+id/mLinePathView"
+            android:layout_marginHorizontal="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+        <com.example.view.XRangeSlider
+            android:id="@+id/mXRangeSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:xrs_insideRangeLineColor="@color/up_common_brand_color_press"
+            app:xrs_insideRangeLineStrokeWidth="5dp"
+            app:xrs_max="100"
+            app:xrs_min="1"
+            app:xrs_isFitColor="false"
+            app:xrs_isShowBubble="false"
+            app:xrs_verticalPadding="4dp"
+            app:xrs_numberTextSize="15sp"
+            app:xrs_outsideRangeLineColor="#f0f0f0"
+            app:xrs_outsideRangeLineStrokeWidth="5dp" />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

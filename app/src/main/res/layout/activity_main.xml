@@ -18,5 +18,10 @@
       android:text="热点图"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"/>
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/mBtn3"
+      android:text="区域选择bar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
  </LinearLayout>
 </androidx.core.widget.NestedScrollView>

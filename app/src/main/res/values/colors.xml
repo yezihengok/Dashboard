@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="up_common_brand_color_press">#0057FF</color>
     <color name="dashboard_gary">#9BA5B8</color>
     <color name="dashboard_red">#FF0B00</color>
     <color name="dashboard_gary_stock">#66DCDCDC</color>
@@ -23,4 +23,15 @@
     <color name="up_common_fall_color_70">#4D00AF3C</color>
     <color name="up_common_divider_strong_color">#D8D8D8</color>
     <color name="up_common_black_text">#222222</color>
+
+    <color name="up_market_line_color">#E162E1</color>
+
+    <color name="up_market_start_color">#B8B8B8</color>
+    <color name="up_market_end_color">#1AB8B8B8</color>
+
+    <color name="up_market_start_selected_color">#804d8dff</color>
+    <color name="up_market_end_selected_color">#0d4d8dff</color>
+
+<!--    <color name="up_marketui_sdk_now_price_shader_end_color">#FF2F3342</color>-->
+
 </resources>
